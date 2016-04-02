@@ -1,0 +1,47 @@
+extends layout
+
+append css
+  style(type='text/css').
+    body {
+      background-color: #DADADA;
+    }
+
+    body > .grid {
+      height: 100%;
+    }
+
+    .image {
+      margin-top: -100px;
+    }
+
+    .column {
+      max-width: 450px;
+    }
+
+append js
+  script(src="js/login.js")
+
+block content
+
+  .ui.middle.aligned.center.aligned.grid
+    .column
+      h2.ui.teal.image.header
+        .content Log-in to your account
+      form.ui.large.form(method="post", action="/login")
+        .ui.stacked.segment
+          .field
+            .ui.left.icon.input
+              i.user.icon
+              input(type='text', name='username', placeholder='username')
+          .field
+            .ui.left.icon.input
+              i.lock.icon
+              input(type='password', name='password', placeholder='Password')
+          .ui.fluid.large.teal.submit.button Login
+
+        .ui.error.message
+        if message
+          .ui.negative.message
+            i.close.icon
+            .header Login Error
+            p= message
